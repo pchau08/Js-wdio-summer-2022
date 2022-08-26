@@ -124,13 +124,13 @@ describe('Verify DarkSkyNet and Facebook test cases', () => {
         await submitButton.click();
         await browser.pause(2000);
 
-        const errorMsg = await $('._9ay7').getText();
+        const errorMsg = await $("//div[contains(text(),'The email or mobile number')]").getText();
 
         if (errorMsg == 'The email or mobile number you entered isn’t connected to an account. Find your account and log in.') {
             console.log(`\nUser receives the following error when attempting to login with no username or password credentials typed in. Please refew to the error message below\n "${errorMsg}"\n`);
         }
 
-        const errorMsgDisplay = await $('._9ay7').isDisplayed()
+        const errorMsgDisplay = await $("//div[contains(text(),'The email or mobile number')]").isDisplayed()
         expect(errorMsgDisplay, 'The correct error message did NOT appear').to.be.true;
     });
 
